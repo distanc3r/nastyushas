@@ -38,7 +38,7 @@ const steps = [
   },
   {
     image: ["IMG_0905.jpg", "IMG_0916.jpg"],
-    question: "HowThe woman in the photo seems to have seen something in the sky and then raised her hands in surrender. What could be the reason? did we end up here in this photo?",
+    question: "The woman in the photo seems to have seen something in the sky and then raised her hands in surrender. What could be the reason?",
     options: [
       "The police came to deport her",
       "She stole a valuable historical artifact from the Galata Museum.",
