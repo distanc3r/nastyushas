@@ -1,0 +1,45 @@
+/* App.css */
+
+.game-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: #fdf6f0;
+  min-height: 100vh;
+}
+
+.options button {
+  margin: 10px;
+  background: #ff8fa3;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1rem;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.options button:hover {
+  background: #f76c8d;
+}
+
+.final-video {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.final-video button {
+  background: #ff8fa3;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1rem;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.final-video button:hover {
+  background: #f76c8d;
+}

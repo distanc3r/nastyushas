@@ -1,0 +1,67 @@
+import React, { useState } from "react";
+import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { motion } from "framer-motion";
+import steps from "./steps"; // steps.js dosyasını import et
+
+const Game = () => {
+  const [currentStep, setCurrentStep] = useState(0);
+  const [message, setMessage] = useState("");
+  const [showFinalVideo, setShowFinalVideo] = useState(false);
+
+  const step = steps[currentStep];
+
+  const handleAnswer = (selectedIndex) => {
+    if (selectedIndex === step.answer) {
+      setMessage(step.message);
+      if (currentStep + 1 < steps.length) {
+        setTimeout(() => {
+          setCurrentStep(currentStep + 1);
+          setMessage(""); // Mesajı sıfırla
+        }, 2500); // 2.5 saniye sonra bir sonraki soruya geç
+      } else {
+        setShowFinalVideo(true); // Video ekranını göster
+      }
+    } else {
+      setMessage("Try again, kotik 💛");
+    }
+  };
+
+  if (showFinalVideo) {
+    return (
+      <div className="final-video">
+        <h2>🥳 Congratulations! You have finished the game!</h2>
+        <a href={step.finalVideo} target="_blank" rel="noopener noreferrer">
+          <button>Click here to watch your special video 🎥</button>
+        </a>
+      </div>
+    );
+  }
+
+  return (
+    <motion.div
+      className="game-container"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.5 }}
+    >
+      <Card>
+        <CardContent>
+          <h3>Step {currentStep + 1}</h3>
+          <p>{step.question}</p>
+          {step.image && <img src={step.image} alt="Step Image" />}
+          <div className="options">
+            {step.options.map((option, index) => (
+              <Button key={index} onClick={() => handleAnswer(index)}>
+                {option}
+              </Button>
+            ))}
+          </div>
+          {message && <p>{message}</p>}
+        </CardContent>
+      </Card>
+    </motion.div>
+  );
+};
+
+export default Game;
